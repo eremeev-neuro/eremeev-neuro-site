@@ -1,0 +1,376 @@
+/* Сайт нейрохирурга Михаила Еремеева.
+   Композиция: спокойная светлая страница, один акцент (глубокий сине-зелёный),
+   тёплый графит для текста, крупные читаемые размеры для людей старшего возраста.
+   Шрифты системные, без внешних сервисов. */
+
+:root {
+  --bg: #F3F4F1;
+  --surface: #FFFFFF;
+  --ink: #1F2729;
+  --muted: #566365;
+  --line: #D6DCD9;
+  --accent: #1D5C5A;
+  --accent-hover: #164846;
+  --accent-soft: #DDEAE7;
+  --on-accent: #FFFFFF;
+  --notice-bg: #EFE5CC;
+  --notice-ink: #3A3120;
+  --todo-bg: #FBF3DC;
+  --todo-ink: #6B5416;
+
+  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --radius: 10px;
+  --maxw: 1120px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111A1B;
+    --surface: #182324;
+    --ink: #E6EEEC;
+    --muted: #9CAEAB;
+    --line: #2A3A39;
+    --accent: #72C4BC;
+    --accent-hover: #8AD3CC;
+    --accent-soft: #1D3330;
+    --on-accent: #0D1918;
+    --notice-bg: #3A3220;
+    --notice-ink: #F0E3C4;
+    --todo-bg: #3A3118;
+    --todo-ink: #EAD9A0;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #111A1B;
+  --surface: #182324;
+  --ink: #E6EEEC;
+  --muted: #9CAEAB;
+  --line: #2A3A39;
+  --accent: #72C4BC;
+  --accent-hover: #8AD3CC;
+  --accent-soft: #1D3330;
+  --on-accent: #0D1918;
+  --notice-bg: #3A3220;
+  --notice-ink: #F0E3C4;
+  --todo-bg: #3A3118;
+  --todo-ink: #EAD9A0;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 84px;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--accent); }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  text-wrap: balance;
+  letter-spacing: -0.005em;
+}
+
+h2 { font-size: clamp(1.7rem, 4.2vw, 2.25rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0; }
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap { max-width: var(--maxw); margin: 0 auto; }
+
+/* Полоса о противопоказаниях: ч. 7 ст. 24 38-ФЗ, не меньше 5% площади */
+.notice {
+  background: var(--notice-bg);
+  color: var(--notice-ink);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding: 14px max(16px, env(safe-area-inset-right, 0px)) 14px max(16px, env(safe-area-inset-left, 0px));
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Макетная плашка: убирается при публикации */
+.mockbar {
+  background: var(--ink);
+  color: var(--bg);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* Шапка */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 16px;
+}
+
+.brand { font-family: var(--display); font-size: 1.2rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+.brand small { display: block; font-family: var(--body); font-weight: 400; font-size: 0.82rem; color: var(--muted); letter-spacing: 0.02em; }
+
+.nav { display: none; gap: 26px; }
+.nav a { color: var(--ink); text-decoration: none; font-size: 1rem; }
+.nav a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+
+.header-phone { display: none; font-weight: 600; text-decoration: none; color: var(--ink); white-space: nowrap; }
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: var(--radius);
+  font: 600 1.05rem var(--body);
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid var(--accent);
+  transition: background-color 0.15s, color 0.15s;
+}
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.btn-ghost { background: transparent; color: var(--accent); }
+.btn-ghost:hover { background: var(--accent-soft); }
+
+/* Первый экран */
+.hero {
+  display: grid;
+  gap: 32px;
+  padding-block: 28px 56px;
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero h1 { font-size: clamp(2.3rem, 7vw, 3.6rem); margin-top: 10px; }
+.hero .role { font-family: var(--display); font-size: clamp(1.15rem, 3vw, 1.45rem); margin-top: 14px; color: var(--ink); }
+.hero .lead { margin-top: 18px; max-width: 34em; color: var(--muted); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; padding: 0; list-style: none; }
+.hero-tags li { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 6px 16px; font-size: 0.95rem; font-weight: 600; }
+
+/* Слот фото. Если файла нет, показывается подпись с именем файла. */
+.photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-width: 100%;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--accent);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 24px;
+  border: 1px solid var(--line);
+}
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.photo code { display: block; margin-top: 6px; font-size: 0.85rem; color: var(--muted); }
+.photo-wide { aspect-ratio: 16 / 9; }
+.photo-square { aspect-ratio: 1 / 1; }
+.photo-tall { aspect-ratio: 3 / 4; padding: 8px; }
+.photo-square img { object-position: center 20%; }
+.about-media { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Разделы */
+.section { padding-block: 56px; border-top: 1px solid var(--line); }
+.section-head { max-width: 40em; margin-bottom: 32px; }
+.section-head p { margin-top: 12px; color: var(--muted); }
+
+/* Направления */
+.cards { display: grid; gap: 16px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.card .symptoms { color: var(--muted); font-size: 1rem; }
+.card .symptoms strong { color: var(--ink); }
+.card .how { font-size: 1rem; }
+.card-todo { border-style: dashed; background: var(--todo-bg); color: var(--todo-ink); }
+.card-todo h3, .card-todo .symptoms, .card-todo .symptoms strong { color: var(--todo-ink); }
+
+/* Консультация */
+.consult { display: grid; gap: 40px; }
+.steps { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; gap: 24px; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; }
+.steps li::before {
+  content: counter(step);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.steps h3 { margin-bottom: 4px; }
+.steps p { color: var(--muted); font-size: 1rem; }
+
+.bring { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; align-self: start; }
+.bring h3 { margin-bottom: 14px; }
+.bring ul { margin: 0; padding-left: 1.2em; display: grid; gap: 10px; }
+.bring li::marker { color: var(--accent); }
+
+/* О враче */
+.about { display: grid; gap: 32px; }
+.about .text { display: grid; gap: 18px; align-content: start; }
+.facts { margin: 8px 0 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.facts div { display: grid; gap: 4px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.facts dt { color: var(--muted); font-size: 0.95rem; }
+.facts dd { margin: 0; }
+.todo { background: var(--todo-bg); color: var(--todo-ink); padding: 2px 8px; border-radius: 4px; font-size: 0.95rem; }
+
+.diploma { margin: 12px 0 0; max-width: 420px; }
+.diploma img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.diploma figcaption { margin-top: 10px; font-size: 0.95rem; color: var(--muted); }
+
+/* Вопросы */
+.faq { display: grid; gap: 12px; max-width: 46em; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 20px 56px 20px 22px;
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  position: relative;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+  font-family: var(--body); font-size: 1.6rem; color: var(--accent); line-height: 1;
+}
+.faq details[open] summary::after { content: "–"; }
+.faq .answer { padding: 0 22px 22px; color: var(--muted); display: grid; gap: 10px; }
+.faq .answer strong { color: var(--ink); }
+
+/* Запись */
+.contact { display: grid; gap: 32px; }
+.form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: grid; gap: 18px; }
+.field { display: grid; gap: 6px; }
+.field label { font-weight: 600; font-size: 1rem; }
+.field input {
+  min-height: 52px;
+  border: 1.5px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  border-radius: 8px;
+  padding: 0 14px;
+  font: 1.05rem var(--body);
+  width: 100%;
+}
+.field input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+.hint { background: var(--accent-soft); color: var(--accent); border-radius: 8px; padding: 12px 14px; font-size: 1rem; font-weight: 600; }
+.form-note { font-size: 0.9rem; color: var(--muted); }
+.form-status { font-size: 1rem; color: var(--accent); min-height: 1.4em; }
+
+.contact { display: grid; gap: 32px; }
+.contact-side { display: grid; gap: 28px; align-content: start; min-width: 0; }
+.phone { color: var(--ink); text-decoration: none; font-size: 1.5rem; white-space: nowrap; }
+.phone:hover { color: var(--accent); }
+.contact-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 18px; align-content: start; }
+.contact-list li { display: grid; gap: 2px; }
+.contact-list .label { color: var(--muted); font-size: 0.95rem; }
+.contact-list .value { font-size: 1.15rem; font-weight: 600; }
+.map {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  border: 1px dashed var(--line);
+  background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 20px;
+  color: var(--accent); font-size: 0.95rem;
+}
+
+/* Подвал */
+.footer { border-top: 1px solid var(--line); padding-block: 36px; display: grid; gap: 14px; color: var(--muted); font-size: 0.95rem; }
+.footer a { color: var(--muted); }
+.footer .legal { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+
+/* Нижняя панель на телефоне: «Позвонить» всегда под пальцем */
+.dock {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 20;
+  display: flex;
+  gap: 10px;
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+.dock .btn { flex: 1; min-height: 52px; padding: 0 12px; }
+
+@media (min-width: 760px) {
+  body { padding-block: 0; }
+  .nav { display: flex; }
+  .header-phone { display: inline; }
+  .dock { display: none; }
+  .hero { grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; padding-block: 56px 72px; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .consult { grid-template-columns: 1.3fr 1fr; gap: 56px; }
+  .about { grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+  .facts div { grid-template-columns: 200px 1fr; gap: 20px; }
+  .contact--two { grid-template-columns: 1.1fr 0.9fr; gap: 48px; }
+}
+
+@media (min-width: 1000px) {
+  .cards { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
