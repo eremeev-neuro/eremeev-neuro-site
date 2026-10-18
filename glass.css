@@ -231,3 +231,27 @@ body {
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .eyebrow { color: #9AE6F5; } }
 .hero-panel .lead { color: #2B3B4F; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero-panel .lead { color: #D2DFEE; } }
+
+/* Карточки клинических случаев: наборы снимков */
+.case { grid-template-columns: 1fr !important; }
+.case .case-head { grid-column: auto !important; display: grid; gap: 10px; }
+.case .case-head p:not(.eyebrow) { color: var(--muted); max-width: 70ch; }
+.case-set { display: grid; gap: 10px; }
+.case-set h3 { font-size: 1.05rem; }
+.case-figs { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .case-figs { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items: start; } }
+.case-figs figure { margin: 0; display: grid; gap: 6px; }
+.case-figs a { display: block; border-radius: 12px; overflow: hidden; }
+.case-figs img { width: 100%; height: auto; background: #0A0F14; border: 1px solid var(--line); border-radius: 12px; }
+
+.nav a, .brand span { white-space: nowrap; }
+@media (min-width: 760px) { .nav { gap: 20px; } .nav a { font-size: 0.95rem; } }
+@media (min-width: 760px) and (max-width: 1040px) { .nav { gap: 12px; } .nav a { font-size: 0.85rem; } .header-phone { font-size: 0.9rem; } }
+.case-set--wide .case-figs img { max-height: 520px; object-fit: contain; }
+.case-set--wide .case-figs { align-items: start; }
+
+@media (min-width: 760px) { .header { flex-wrap: wrap; gap: 8px 20px; } .nav { flex-wrap: wrap; } }
+@media (min-width: 760px) and (max-width: 1099px) { .header-phone { display: none; } }
+
+/* Одиночный снимок в группе: не растягивать на всю ширину */
+.case-figs figure:only-child { max-width: 380px; }
