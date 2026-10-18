@@ -35,6 +35,7 @@
       <a href="#priem">Как проходит приём</a>
       <a href="#vrach">О враче</a>
       <a href="#voprosy">Вопросы</a>
+      <!--CASES<a href="cases.html">Клинические случаи</a>CASES-->
       <a href="#zapis">Контакты</a>
     </nav>
     <a class="header-phone" href="tel:+79901428383">+7 (990) 142-83-83</a>
@@ -255,6 +256,7 @@
 </div>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+(function(){var h=document.querySelector('.hero'),r=document.documentElement;if(!h||!('IntersectionObserver' in window))return;r.classList.add('js');new IntersectionObserver(function(e){r.classList.toggle('dock-on',!e[0].isIntersecting);},{threshold:0}).observe(h);})();
 </script>
 
 </body>
