@@ -255,3 +255,11 @@ body {
 
 /* Одиночный снимок в группе: не растягивать на всю ширину */
 .case-figs figure:only-child { max-width: 380px; }
+
+/* Ссылка на кейсы на главной */
+.cases-teaser { background: var(--glass); backdrop-filter: blur(14px) saturate(1.25); -webkit-backdrop-filter: blur(14px) saturate(1.25); border: 1px solid var(--glass-line); box-shadow: var(--glass-shadow); border-radius: 18px; padding: 22px; display: grid; gap: 16px; align-items: center; }
+.cases-teaser h2 { font-size: 1.35rem; }
+.cases-teaser p { margin-top: 6px; color: var(--muted); }
+.cases-teaser .btn { width: 100%; }
+@media (min-width: 640px) { .cases-teaser { grid-template-columns: 1fr auto; padding: 26px 30px; } .cases-teaser .btn { width: auto; min-width: 160px; } }
+.footer-links a { color: var(--muted); }
