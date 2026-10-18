@@ -138,6 +138,8 @@ p { margin: 0; }
 }
 
 .brand { font-family: var(--display); font-size: 1.2rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+.brand { display: inline-flex; align-items: center; gap: 12px; }
+.brand-logo { width: 44px; height: 44px; border-radius: 10px; flex: none; }
 .brand small { display: block; font-family: var(--body); font-weight: 400; font-size: 0.82rem; color: var(--muted); letter-spacing: 0.02em; }
 
 .nav { display: none; gap: 26px; }
@@ -373,4 +375,24 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn { transition: none; }
+}
+
+/* Контакты: ссылки под адресом и кнопки мессенджеров */
+.contact-list .links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 4px; font-size: 1rem; }
+.messengers { display: flex; flex-wrap: wrap; gap: 12px; }
+.messengers .btn { min-width: 140px; }
+
+/* Пиктограммы */
+.ico { display: block; width: 64px; height: 64px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 6px; flex: none; }
+.card .ico { margin-bottom: 4px; }
+.ico-sm { width: 40px; height: 40px; border-radius: 10px; padding: 3px; display: inline-block; vertical-align: middle; margin-right: 10px; }
+.ico-h { width: 52px; height: 52px; border-radius: 12px; }
+.ico-c { width: 48px; height: 48px; border-radius: 12px; padding: 3px; grid-row: 1 / span 4; }
+h2.h-ico { display: flex; align-items: center; gap: 14px; }
+.contact-list li { grid-template-columns: 48px 1fr; column-gap: 14px; align-items: start; }
+.contact-list li > :not(.ico) { grid-column: 2; }
+.bring h3 { display: flex; align-items: center; }
+.bring h3 .ico { margin-right: 10px; }
+@media (min-width: 760px) {
+  .ico-h { width: 60px; height: 60px; }
 }
