@@ -4,15 +4,17 @@
    Шрифты системные, без внешних сервисов. */
 
 :root {
-  --bg: #F3F4F1;
+  --bg: #F2F5F8;
   --surface: #FFFFFF;
-  --ink: #1F2729;
-  --muted: #566365;
-  --line: #D6DCD9;
-  --accent: #1D5C5A;
-  --accent-hover: #164846;
-  --accent-soft: #DDEAE7;
+  --ink: #14202E;
+  --muted: #4C5B6D;
+  --line: #D3DCE6;
+  --accent: #0B2F6B;
+  --accent-hover: #082250;
+  --accent-soft: #E1F0F7;
   --on-accent: #FFFFFF;
+  --cyan: #00A8C8;
+  --cyan-text: #00728F;
   --notice-bg: #EFE5CC;
   --notice-ink: #3A3120;
   --todo-bg: #FBF3DC;
@@ -27,37 +29,41 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #111A1B;
-    --surface: #182324;
-    --ink: #E6EEEC;
-    --muted: #9CAEAB;
-    --line: #2A3A39;
-    --accent: #72C4BC;
-    --accent-hover: #8AD3CC;
-    --accent-soft: #1D3330;
-    --on-accent: #0D1918;
+    --bg: #0A1424;
+    --surface: #101D33;
+    --ink: #E6EEF5;
+    --muted: #A3B5CA;
+    --line: #24344F;
+    --accent: #5FD0E8;
+    --accent-hover: #8FE0F1;
+    --accent-soft: #12303F;
+    --on-accent: #04202B;
     --notice-bg: #3A3220;
     --notice-ink: #F0E3C4;
     --todo-bg: #3A3118;
     --todo-ink: #EAD9A0;
+    --cyan: #5FD0E8;
+    --cyan-text: #5FD0E8;
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #111A1B;
-  --surface: #182324;
-  --ink: #E6EEEC;
-  --muted: #9CAEAB;
-  --line: #2A3A39;
-  --accent: #72C4BC;
-  --accent-hover: #8AD3CC;
-  --accent-soft: #1D3330;
-  --on-accent: #0D1918;
+  --bg: #0A1424;
+  --surface: #101D33;
+  --ink: #E6EEF5;
+  --muted: #A3B5CA;
+  --line: #24344F;
+  --accent: #5FD0E8;
+  --accent-hover: #8FE0F1;
+  --accent-soft: #12303F;
+  --on-accent: #04202B;
   --notice-bg: #3A3220;
   --notice-ink: #F0E3C4;
   --todo-bg: #3A3118;
   --todo-ink: #EAD9A0;
+  --cyan: #5FD0E8;
+  --cyan-text: #5FD0E8;
   color-scheme: dark;
 }
 
@@ -139,7 +145,8 @@ p { margin: 0; }
 
 .brand { font-family: var(--display); font-size: 1.2rem; font-weight: 600; color: var(--ink); text-decoration: none; }
 .brand { display: inline-flex; align-items: center; gap: 12px; }
-.brand-logo { width: 44px; height: 44px; border-radius: 10px; flex: none; }
+.brand-logo { width: 58px; height: 58px; border-radius: 13px; flex: none; }
+@media (min-width: 760px) { .brand-logo { width: 64px; height: 64px; border-radius: 14px; } .brand { font-size: 1.3rem; } }
 .brand small { display: block; font-family: var(--body); font-weight: 400; font-size: 0.82rem; color: var(--muted); letter-spacing: 0.02em; }
 
 .nav { display: none; gap: 26px; }
@@ -247,10 +254,11 @@ p { margin: 0; }
 .steps li { counter-increment: step; display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; }
 .steps li::before {
   content: counter(step);
-  width: 44px; height: 44px;
+  width: 38px; height: 38px;
   border-radius: 50%;
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(0, 168, 200, 0.35);
   display: flex; align-items: center; justify-content: center;
   font-family: var(--display);
   font-size: 1.2rem;

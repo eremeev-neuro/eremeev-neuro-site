@@ -11,16 +11,16 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --glass: rgba(24, 38, 40, 0.72);
-  --glass-strong: rgba(18, 30, 32, 0.88);
+  --glass: rgba(16, 29, 51, 0.72);
+  --glass-strong: rgba(10, 20, 36, 0.88);
   --glass-line: rgba(255, 255, 255, 0.14);
   --glass-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 12px 32px rgba(0, 0, 0, 0.35);
   --gloss: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 42%);
   }
 }
 :root[data-theme="dark"] {
-  --glass: rgba(24, 38, 40, 0.72);
-  --glass-strong: rgba(18, 30, 32, 0.88);
+  --glass: rgba(16, 29, 51, 0.72);
+  --glass-strong: rgba(10, 20, 36, 0.88);
   --glass-line: rgba(255, 255, 255, 0.14);
   --glass-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 12px 32px rgba(0, 0, 0, 0.35);
   --gloss: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 42%);
@@ -32,10 +32,10 @@ html, body { overflow-x: clip; }
 body {
   background-color: var(--bg);
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1600'%3E%3Cfilter id='m' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0022 0.006' numOctaves='5' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.52  0 0 0 0 0.55  0 0 0 -16 7.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='0.16'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1600'%3E%3Cfilter id='m' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0022 0.006' numOctaves='5' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.40  0 0 0 0 0.50  0 0 0 0 0.62  0 0 0 -16 7.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='0.16'/%3E%3C/svg%3E"),
     radial-gradient(1100px 600px at 12% -5%, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(900px 700px at 100% 35%, rgba(210,230,232,0.55), transparent 65%),
-    linear-gradient(180deg, #F6F7F5 0%, #EAEFEE 100%);
+    radial-gradient(900px 700px at 100% 35%, rgba(205,225,240,0.55), transparent 65%),
+    linear-gradient(180deg, #F5F8FB 0%, #E8EEF4 100%);
   background-attachment: scroll, scroll, scroll, scroll;
 }
 /* Шапка: матовое стекло */
@@ -76,9 +76,9 @@ body {
     #0B2236;
 }
 .hero-panel {
-  background: var(--glass-strong);
-  -webkit-backdrop-filter: blur(22px) saturate(1.4);
-  backdrop-filter: blur(22px) saturate(1.4);
+  background: linear-gradient(180deg, rgba(255,255,255,0.40) 0%, rgba(255,255,255,0.58) 55%, rgba(255,255,255,0.74) 100%);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  backdrop-filter: blur(20px) saturate(1.5);
   border: 1px solid var(--glass-line);
   border-radius: 22px;
   box-shadow: var(--glass-shadow), 0 24px 60px rgba(4, 20, 32, 0.30);
@@ -125,11 +125,11 @@ body {
 /* Глянцевые кнопки */
 .btn { border-radius: 14px; }
 .btn-primary {
-  background: linear-gradient(180deg, #2B7A76 0%, #1D5C5A 55%, #164846 100%);
-  border-color: #164846;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.35) inset, 0 8px 20px rgba(29, 92, 90, 0.35);
+  background: linear-gradient(180deg, #2457AB 0%, #123B80 55%, #0B2F6B 100%);
+  border-color: #0A2760;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.35) inset, 0 8px 20px rgba(11, 47, 107, 0.35);
 }
-.btn-primary:hover { background: linear-gradient(180deg, #318580 0%, #236A67 55%, #1A5250 100%); border-color: #164846; }
+.btn-primary:hover { background: linear-gradient(180deg, #2E68C2 0%, #194A9A 55%, #0F3577 100%); border-color: #0A2760; }
 .btn-ghost {
   background: var(--glass-strong);
   -webkit-backdrop-filter: blur(8px);
@@ -211,16 +211,23 @@ body {
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) body {
     background-image:
-      radial-gradient(1000px 600px at 10% -5%, rgba(80,140,140,0.20), transparent 60%),
-      linear-gradient(180deg, #111A1B 0%, #0C1415 100%);
+      radial-gradient(1000px 600px at 10% -5%, rgba(60,120,190,0.22), transparent 60%),
+      linear-gradient(180deg, #0A1424 0%, #070E1A 100%);
   }
-  :root:not([data-theme="light"]) .notice { background: rgba(24, 38, 40, 0.92); color: #D3DEDC; border-bottom-color: var(--line); }
-  :root:not([data-theme="light"]) .btn-primary { background: linear-gradient(180deg, #9BDDD6 0%, #7ECFC7 55%, #62BBB3 100%); border-color: #62BBB3; color: #08201E; box-shadow: 0 1px 0 rgba(255,255,255,0.45) inset, 0 8px 20px rgba(0, 0, 0, 0.4); }
-  :root:not([data-theme="light"]) .btn-primary:hover { background: linear-gradient(180deg, #B0E8E2 0%, #92D8D1 55%, #74C7BF 100%); }
-  :root:not([data-theme="light"]) .btn-ghost { color: #A8E3DD; border-color: #72C4BC; background: rgba(18, 30, 32, 0.88); }
-  :root:not([data-theme="light"]) .hero-tags li { background: rgba(114, 196, 188, 0.16); color: #C2EEE9; border-color: rgba(114, 196, 188, 0.45); box-shadow: none; }
-  :root:not([data-theme="light"]) .hero-panel { background: rgba(14, 24, 26, 0.86); }
-  :root:not([data-theme="light"]) .lead, :root:not([data-theme="light"]) .symptoms, :root:not([data-theme="light"]) .section-head p, :root:not([data-theme="light"]) .page-head p { color: #BFCFCC; }
+  :root:not([data-theme="light"]) .notice { background: rgba(16, 29, 51, 0.92); color: #D3DFEC; border-bottom-color: var(--line); }
+  :root:not([data-theme="light"]) .btn-primary { background: linear-gradient(180deg, #8FE6F6 0%, #55CDE6 55%, #2FB6D3 100%); border-color: #2FB6D3; color: #03202A; box-shadow: 0 1px 0 rgba(255,255,255,0.45) inset, 0 8px 20px rgba(0, 0, 0, 0.4); }
+  :root:not([data-theme="light"]) .btn-primary:hover { background: linear-gradient(180deg, #A8EEFA 0%, #70D8EC 55%, #45C2DC 100%); }
+  :root:not([data-theme="light"]) .btn-ghost { color: #9AE6F5; border-color: #5FD0E8; background: rgba(10, 20, 36, 0.88); }
+  :root:not([data-theme="light"]) .hero-tags li { background: rgba(95, 208, 232, 0.14); color: #C6F0FA; border-color: rgba(95, 208, 232, 0.45); box-shadow: none; }
+  :root:not([data-theme="light"]) .hero-panel { background: linear-gradient(180deg, rgba(8,16,30,0.46) 0%, rgba(8,16,30,0.62) 55%, rgba(8,16,30,0.82) 100%); }
+  :root:not([data-theme="light"]) .lead, :root:not([data-theme="light"]) .symptoms, :root:not([data-theme="light"]) .section-head p, :root:not([data-theme="light"]) .page-head p { color: #BCCDE0; }
   :root:not([data-theme="light"]) .booking-note, :root:not([data-theme="light"]) .case-note { color: var(--ink); }
-  :root:not([data-theme="light"]) .case figure img { background: #0C1415; }
+  :root:not([data-theme="light"]) .case figure img { background: #070E1A; }
 }
+
+/* Акцентный голубой цвет из логотипа */
+.eyebrow { color: var(--accent); }
+.section .eyebrow, .case .eyebrow { color: var(--cyan-text); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .eyebrow { color: #9AE6F5; } }
+.hero-panel .lead { color: #2B3B4F; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero-panel .lead { color: #D2DFEE; } }
